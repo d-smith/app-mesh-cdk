@@ -1,5 +1,6 @@
 package org.ds.sample.appmesh;
 
+import software.amazon.awscdk.services.appmesh.Mesh;
 import software.constructs.Construct;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
@@ -15,6 +16,10 @@ public class VpcStack extends Stack {
 
         Vpc vpc = Vpc.Builder.create(this, "MyVpc")
                 .maxAzs(3)  // Default is all AZs in region
+                .build();
+
+        Mesh mesh = Mesh.Builder.create(this, "MyMesh")
+                .meshName("MyMesh")
                 .build();
     }
 }
