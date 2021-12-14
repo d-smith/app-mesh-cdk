@@ -31,7 +31,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>org.ds.sample.appmesh.VpcApp</mainClass>
+                    <mainClass>org.ds.sample.appmesh.CdkAppMeshApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
