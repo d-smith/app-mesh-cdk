@@ -1,10 +1,12 @@
 package org.ds.sample.appmesh;
 
 import org.ds.sample.appmesh.components.IamComponents;
+import org.ds.sample.appmesh.components.LogGroups;
 import software.amazon.awscdk.Duration;
 import software.amazon.awscdk.services.appmesh.*;
 import software.amazon.awscdk.services.ecs.Cluster;
 import software.amazon.awscdk.services.iam.Role;
+import software.amazon.awscdk.services.logs.LogGroup;
 import software.constructs.Construct;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
@@ -138,6 +140,7 @@ public class CdkAppMeshStack extends Stack {
 
         Role taskRole = IamComponents.createTaskIamRole(this);
         Role taskServiceRole = IamComponents.createTaskExecutionIamRole(this);
+        LogGroup logGroup = LogGroups.createLogGroup(this);
 
         /*
         VirtualNode blackVirtualNode = createVirtualNode(mesh, "black");
