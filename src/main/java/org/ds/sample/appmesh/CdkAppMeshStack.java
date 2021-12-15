@@ -1,9 +1,10 @@
 package org.ds.sample.appmesh;
 
-import com.sun.tools.javac.util.List;
+import org.ds.sample.appmesh.components.IamComponents;
 import software.amazon.awscdk.Duration;
 import software.amazon.awscdk.services.appmesh.*;
 import software.amazon.awscdk.services.ecs.Cluster;
+import software.amazon.awscdk.services.iam.Role;
 import software.constructs.Construct;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
@@ -135,8 +136,10 @@ public class CdkAppMeshStack extends Stack {
 
         Cluster cluster = Cluster.Builder.create(this, "colors-cluster").vpc(vpc).build();
 
+        Role taskRole = IamComponents.createTaskIamRole(this);
+        Role taskServiceRole = IamComponents.createTaskExecutionIamRole(this);
 
-
+        /*
         VirtualNode blackVirtualNode = createVirtualNode(mesh, "black");
         VirtualNode blueVirtualNode = createVirtualNode(mesh, "blue");
         VirtualNode redVirtualNode = createVirtualNode(mesh, "red");
@@ -193,7 +196,7 @@ public class CdkAppMeshStack extends Stack {
                 .build();
 
         // -------- ECS Services ---------
-
+*/
 
     }
 }
